@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sandbox</title>
+</head>
+<body>
+	
+
+<script type="text/javascript">
+	
+//Variables
+//===========================================================================================================
+
+	var heroList = [
+		"superman",
+		"batman",
+		"spiderman",
+		"wolverine",
+		"flash",
+		"batgirl",
+		"shazam"];
+
+	var userGuesses = [];
+
+	var maxGuesses = 15;
+
+	//The below function randomly selects a hero name for the user to guess from the possible list of heroes
+	var randomHero = heroList[Math.floor(Math.random() * heroList.length)];
+		console.log("This is random superhero: "+ randomHero);
+
+	//The .split("") method separates the letters from the superhero's name and puts the letters into an array
+	var heroLetters = randomHero.split("");
+		console.log("These are the letters that make up the superhero: " + heroLetters);
+
+//Functions
+//==================================================================================================================
+
+	
+
+</script>
+
+
+<h1>Welcome to Super Hero Hangman!</h1>
+<p>
+	Press any key to get started
+</p>
+
+<p style="font-weight: bold">Wins</p>
+<p id="wins"></p>
+
+<p style="font-weight: bold">Current Word</p>
+<p id="currentWord"></p>
+
+<p style="font-weight: bold">Numer of guesses remaining</p>
+<p id="numGuesses"></p>
+
+<p style="font-weight: bold"> Letters already guessed</p>
+<p id="displayguessedLetters"></p>
+
+
+
+<script>
+
+//starts the game
+document.onkeyup = function(startgame){
+	
+
+	for (i=0; i < maxGuesses; i++) {
+
+		if (numGuesses > 0) {
+			//records the user's keystrokes and stores them into an array
+			document.onkeypress = function(event) {
+			var keyPress;
+
+			if (typeof event !== 'undefined') {
+				keyPress = event.keyCode;
+			}
+			else if (event) {
+				keyPress = e.which;
+			}
+
+			userGuesses.push(String.fromCharCode(keyPress));
+
+			console.log("this is the array of userGuesses: " + userGuesses);
+			console.log("this is the lengh of userguesses array: " + userGuesses.length);
+			document.getElementById("displayguessedLetters").innerHTML = userGuesses;
+
+			numGuesses = maxGuesses-userGuesses.length;
+			console.log("This is the value of numGuesses: " + numGuesses);
+			document.getElementById("numGuesses").innerHTML = numGuesses;
+			}
+		}
+		else {
+			console.log("you lose");
+		}
+	}
+	
+
+// function uniCharCode(event) {
+//     var typedChar = event.which || event.keyCode;
+//     var charGuess = String.fromCharCode(typedChar);
+//     document.getElementById("demo").innerHTML = "The Unicode CHARACTER code is: " + typedChar + " which is: " + charGuess;
+
+//        var guessedLetters = charGuess;
+//     console.log("The user guessed: " + guessedLetters);
+// }
+
+// function uniKeyCode(event) {
+//     var typedKey = event.keyCode;
+//     var keyGuess = String.fromCharCode(typedKey);
+//     document.getElementById("demo2").innerHTML = "The Unicode KEY code is: " + typedKey + " which is: " + keyGuess;
+
+
+// }
+
+//
+
+
+}
+// 	event = event || window.event;
+// 	var charCode = event.charCode || event.keyCode;
+// 	character = String.fromCharCode(charCode)
+// 	// console.log("this is the character: " + character);
+
+
+// }
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
