@@ -25,29 +25,22 @@ document.write(guessCount);*/
 
 //console.log(wordList);
 
-document.getElementById("output").innerHTML = "oh boy!";
-
-
-
-
-/*firstPTag.innerHTML = "new paragraph"
-
 userinput = prompt("Type a letter");
 console.log('The user guessed: '+userinput);
 
-document.getElementById("promptvalue");
+document.getElementById("promptvalue").addEventListner("onkeydown", function(){
+	getElementById("output").innerHTML = "The user typed "
+})
 
 
 /*The below selects a random hero from the list*/
-/*function selectHero(){
-	var randomHeroIndex = [Math.floor(Math.random() * heroList.length)];
-		console.log("This is random superhero: "+ randomHeroIndex);
-	var currentHero = heroList[randomHeroIndex];
-		console.log("The current hero is " + currentHero);
-	
-	
+function selectHero(){
+	var randomHero = heroList[Math.floor(Math.random() * heroList.length)];
+		console.log("This is random superhero: "+ randomHero);
+	var removeHero = heroList.splice(randomHero);
+		console.log("This is the updated list of Heroes: " + heroList);
 
-}*/
+}
 
 
 /*function win(){
@@ -55,4 +48,4 @@ document.getElementById("promptvalue");
 		console.log("you win!");
 }*/
 
-/*selectHero()*/
+selectHero()

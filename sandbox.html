@@ -21,9 +21,17 @@
 		"batgirl",
 		"shazam"];
 
-	var userGuesses = [];
+	var guessedLetters = [];
+
+	var incorrectGuess = [];
+
+	var correctGuess = [];
+
+	var heroLetters = [];
 
 	var maxGuesses = 15;
+
+	var numGuesses = maxGuesses;
 
 	//The below function randomly selects a hero name for the user to guess from the possible list of heroes
 	var randomHero = heroList[Math.floor(Math.random() * heroList.length)];
@@ -56,7 +64,7 @@
 <p id="numGuesses"></p>
 
 <p style="font-weight: bold"> Letters already guessed</p>
-<p id="displayguessedLetters"></p>
+<p id="displayIncorrectGuesses"></p>
 
 
 
@@ -65,38 +73,102 @@
 //starts the game
 document.onkeyup = function(startgame){
 	
+	//placeholder for displaying dashes on the screen corresponding to # of letters in word
 
-	for (i=0; i < maxGuesses; i++) {
 
-		if (numGuesses > 0) {
+	
+		//if the user still has guesses remaining AND there are still unguessed letters remaining in the selected word
+		if (numGuesses >= 0 && heroLetters.length > 0) {
+
 			//records the user's keystrokes and stores them into an array
 			document.onkeypress = function(event) {
-			var keyPress;
+			var typedChar;
 
 			if (typeof event !== 'undefined') {
-				keyPress = event.keyCode;
+				typedChar = event.keyCode;
 			}
 			else if (event) {
-				keyPress = e.which;
+				typedChar = e.which;
 			}
 
-			userGuesses.push(String.fromCharCode(keyPress));
+			//converts keycode into a letter
+			var charGuess = String.fromCharCode(typedChar);
+			console.log("This is the letter that the user just guessed: " + charGuess);
 
-			console.log("this is the array of userGuesses: " + userGuesses);
-			console.log("this is the lengh of userguesses array: " + userGuesses.length);
-			document.getElementById("displayguessedLetters").innerHTML = userGuesses;
+			//compares typed letter to letters in the selected word and returns index # if it exists and -1 if it does not exist in array.
+			var a = heroLetters.indexOf(charGuess, 0);
+			console.log("this is the value of a: " + a + ". If a >-1 the guessed char is a letter in the word, if a=-1 then it is an incorrect guess");
 
-			numGuesses = maxGuesses-userGuesses.length;
+			var b = guessedLetters.indexOf(charGuess, 0);
+			console.log("This is the value of b: " + b + ". If b > -1 the letter has ALREADY been guessed. if -1 then letter will be added to guessed list");
+
+			var c = correctGuess.indexOf(charGuess, 0);
+			console.log("This is the value of c: " + c + ". If c > -1 the letter has ALREADY been correctly guessed. if -1 then letter will be added to correct list");
+
+			var d = incorrectGuess.indexOf(charGuess, 0);
+			console.log("This is the value of d: " + d + ". If d > -1 the letter has ALREADY been incorrectly guessed. if -1 then letter will be added to incorrect list");			
+
+				//if the guessed letter is NOT in the selected word (-1) AND the guessed letter is NOT in the guessed letters array (-1)
+				if (a == -1 && b== -1) {
+					
+					//take user guess and put it in the guessedLetters array
+					guessedLetters.push(String.fromCharCode(typedChar));
+					console.log("this is the array of guessedLetters: " + guessedLetters);
+					
+					//take user guess and put it in the incorrect array
+					incorrectGuess.push(String.fromCharCode(typedChar));
+					console.log("these are incorrectly guessed letter: " + incorrectGuess);
+
+					//reduce the numGuesses by 1
+					numGuesses = numGuesses-1;
+					
+				}
+
+				//else if guessed letter IS in the selected word (a>0) AND the guessed letter has not already been correctly guessed before
+				else if (a >= 0 && c== -1 ){
+
+					//take the correctly guessed letters and put them in
+					// function getAllIndexes(heroLetters, charGuess) {
+    	// 				var correctGuess = [], i = -1;
+    	// 				while ((i = heroLetters.indexOf(charGuess, i+1)) != -1){
+     //    				correctGuess.push(i);
+     //    				console.log("these are the correct guesses: " + correctGuess);
+     //    				}
+     				//add guess letter to correctly guessed array
+     				correctGuess.push(String.fromCharCode(typedChar));
+					console.log("these are correctly guessed letter: " + correctGuess);
+
+					guessedLetters.push(String.fromCharCode(typedChar));
+					console.log("this is the array of guessedLetters: " + guessedLetters);
+
+					//reduce the numGuesses by 1
+					numGuesses = numGuesses-1;
+    				}
+				//}
+
+
+
+			
+
+			
+			console.log("this is the lengh of guessedLetters array: " + guessedLetters.length);
+
+			//display the list of guessed letters in the DOM
+			document.getElementById("displayIncorrectGuesses").innerHTML = incorrectGuess;
+
+			//decrements the numGuesses after each guess attempt
+			numGuesses = maxGuesses-guessedLetters.length;
 			console.log("This is the value of numGuesses: " + numGuesses);
+
+			//display the number of guesses remaining
 			document.getElementById("numGuesses").innerHTML = numGuesses;
 			}
 		}
 		else {
 			console.log("you lose");
 		}
-	}
-	
-
+		
+}
 // function uniCharCode(event) {
 //     var typedChar = event.which || event.keyCode;
 //     var charGuess = String.fromCharCode(typedChar);
@@ -117,7 +189,7 @@ document.onkeyup = function(startgame){
 //
 
 
-}
+
 // 	event = event || window.event;
 // 	var charCode = event.charCode || event.keyCode;
 // 	character = String.fromCharCode(charCode)
