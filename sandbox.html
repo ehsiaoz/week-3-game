@@ -127,12 +127,16 @@ document.onkeyup = function(startgame){
 				//else if guessed letter IS in the selected word (a>0) AND the guessed letter has not already been correctly guessed before
 				else if (a >= 0 && c== -1 ){
 
-					//take the correctly guessed letters and put them in
-					// function getAllIndexes(heroLetters, charGuess) {
-    	// 				var correctGuess = [], i = -1;
-    	// 				while ((i = heroLetters.indexOf(charGuess, i+1)) != -1){
-     //    				correctGuess.push(i);
-     //    				console.log("these are the correct guesses: " + correctGuess);
+					//how-to-find-index-of-all-occurrences-of-element-in-array
+					// function getAllIndexes(arr, val) {
+					//     var indexes = [], i = -1;
+					//     while ((i = arr.indexOf(val, i+1)) != -1){
+					//         indexes.push(i);
+					//     }
+					//     return indexes;
+					// }
+
+					// var indexes = getAllIndexes(Cars, "Nano");
      //    				}
      				//add guess letter to correctly guessed array
      				correctGuess.push(String.fromCharCode(typedChar));
