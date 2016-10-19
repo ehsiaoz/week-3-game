@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+<h1>Welcome to SuperHero Hangman!</h1>
+
+<p>Press Any Key to Start</p>
+
+<p id="wins">Wins: </p>
+
+<p id="selectedWord"></p>
+
+<p id="remainingGuesses"># of Guesses Remaining: </p>
+
+<p id="incorrectGuesses">Incorrectly guessed letters: </p>
+
+<script type="text/javascript">
+
+//===========OBJECT==========================
+
+	var hangman = {
+
+		winCount:calcWins, 
+		guessesLeft:calcGuessesRemaining,
+		wordList:["superman", "batman", "robin", "flash", "batgirl"],
+		activeWord:selectNewWord, 
+		activeWordLetters:["a", "b"],
+		hiddenLetters:["_ _ _ _ _"],
+		guessedLettersAll:["a", "b", "c"],
+		guessedLettersIncorrect:["t", "q", "k"],
+		guessedLettersCorrect:[""],
+
+		}
+
+//=============FUNCTIONS=========================
+
+	function detectTypedChar() {
+
+		document.onkeypress = function getchar(event) {
+		var typedChar;
+
+			if (typeof event !== 'undefined') {
+				typedChar = event.keyCode;
+			}
+			else if (event) {
+				typedChar = e.which;
+			}
+
+			//converts keycode into a letter
+			var charGuess = String.fromCharCode(typedChar);
+			console.log("This is the letter that the user just guessed: " + charGuess);
+			return charGuess;
+		}
+	}
+
+	//This function calculates the # of remaining guesses
+	function calcGuessesRemaining() {
+		var maxGuesses = 15;
+		guessesLeft = maxGuesses - hangman.guessedLettersAll.length;
+		return guessesLeft;
+	}
+
+	//This function calculates the # of times the user has successfully guessed the word
+	function calcWins() {
+		var wins = 0
+		if (hangman.guessedLettersCorrect.length == hangman.activeWordLetters.length) {
+		wins = 	wins++;
+		return wins;
+		}
+		
+	}
+
+	//This function selects a new word from the array of possible words
+	function selectNewWord() {
+		var newWord = hangman.wordList[Math.floor(Math.random() * hangman.wordList.length)];
+		return newWord;
+	}
+
+
+//=========The below document.methods updates the html elements in the DOM======
+
+document.getElementById("wins").innerHTML = "Wins: " + hangman.winCount();
+
+document.getElementById("selectedWord").innerHTML = hangman.hiddenLetters;
+
+document.getElementById("remainingGuesses").innerHTML = "# of Guesses Remaining: " + hangman.guessesLeft();
+
+document.getElementById("incorrectGuesses").innerHTML = "Incorrectly guessed letters: " + hangman.guessedLettersIncorrect;
+
+
+//====================console.log=======================
+
+console.log("this is the winCount: " + hangman.winCount()); 
+console.log("this is the guessesLeft: " + hangman.guessesLeft());		
+console.log("this is the wordList: " + hangman.wordList);
+console.log("this is the activeWord: " + hangman.activeWord());
+console.log("this is the activeWordLetters: " + hangman.activeWordLetters);
+console.log("this is the hiddenLetters: " + hangman.hiddenLetters);
+console.log("this is the guessedLettersAll: " + hangman.guessedLettersAll);
+console.log("this is the guessedLettersIncorrect: " + hangman.guessedLettersIncorrect);
+console.log("this is the guessedLettersCorrect: " + hangman.guessedLettersCorrect);
+
+
+
+
+</script> 
+
+</body>
+</html>

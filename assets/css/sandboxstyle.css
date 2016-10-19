@@ -1,36 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-	
-
-<h1>Welcome to Super Hero Hangman!</h1>
-<p>
-	Press any key to get started
-</p>
-
-<p style="font-weight: bold">Wins</p>
-<p id="wins"></p>
-
-<p style="font-weight: bold">Current Word</p>
-<p id="currentWord"></p>
-
-<p style="font-weight: bold">Numer of guesses remaining</p>
-<p id="numGuesses"></p>
-
-<p style="font-weight: bold"> Letters already guessed</p>
-<p id="displayIncorrectGuesses"></p>
-
-
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-
-<script type="text/javascript">
-	
 //Variables
 //===========================================================================================================
 
@@ -210,7 +177,7 @@ document.onkeyup = function(startgame){
 
 
 
-
+/*
 
 	//else if (numGuesses > 0 && heroLetters.length = 1)
 	}
@@ -277,11 +244,4 @@ document.onkeyup = function(startgame){
 
 
 
-// }
-
-</script>
-
-
-
-</body>
-</html>
+// }*/
