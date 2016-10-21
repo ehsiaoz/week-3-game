@@ -2,91 +2,41 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>SuperHero Hangman</title>
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<!-- <script type="text/javascript" src="assets/javascript/game2.js"></script> -->
 </head>
 <body>
+	
+<header class="head col-sm-12">
+	<h1>SuperHero Hangman</h1>	
+</header>
 
-	<h1>Welcome to Superhero Hangman!</h1>
-	<p>Press any key to play SuperHero Hangman!!!</p>
 
-<script type="text/javascript">
+<div class="bg col-sm-12">
+	<img src="assets/images/superhero1.jpg" class="bg-img">
+	<div class="main-content col-sm-12">
+
+<p style="font-weight: bold" id="start">Press any key to get started</p>
+<br>
+
+<p style="font-weight: bold" id="winsText"></p>
+
+<p style="font-weight: bold" id="wordText"></p>
+<p id="wordValue"></p>
+
+<p style="font-weight: bold" id="guessesText"></p>
+<p id="guessesValue"></p>
+
+<p style="font-weight: bold" id="incorrectGuessesText"></p>
+<p id="incorrectGuessesValue"></p>	
+</div>
+</div>
 	
 
-// The below method detects went any key on the keyboard has been depressed and initiates the game
-document.onkeydown = function(){
-
-	//The below array contains the list of superhero names
-	var heroList = [
-	"superman",
-	"batman",
-	"spiderman",
-	"wolverine",
-	"flash",
-	"batgirl",
-	"shazam"];
-
-	console.log(heroList);
-
-	
-	//the below function selects a hero and puts the letters in the hero name in an array
-	function selectHero(){
-	
-	//The below function randomly selects a hero name for the user to guess from the possible list of heroes
-	var randomHero = heroList[Math.floor(Math.random() * heroList.length)];
-		console.log("This is random superhero: "+ randomHero);
-
-	//The .split("") method separates the letters from the superhero's name and puts the letters into an array
-	var heroLetters = randomHero.split("");
-		console.log(heroLetters);
-
-	//Prompt the user to enter a letter
-	var userinput = prompt("Type a letter");
-		console.log('The user guessed: '+ userinput);
-	
-	for (var i=0; i< heroLetters.length; i++){
-		
-		if (userinput == "d"); {
-		console.log("Success!");		
-	}}	
-
-	};
-
-	//initiates the selectHero function
-	
-	selectHero();
-	
-	
-	
-	
-
-};
-
-
-	
-
-
-
-
-// var numOne = document.getElementById("num-one");
-// var numTwo = document.getElementById("num-two");
-// var sum = document.getElementById("add-sum");
-
-// numOne.addEventListener("input", function(){
-// 	console.log("hi");
-// });
-
-// // numOne.addEventListener("input", add);
-// numTwo.addEventListener("input", add);
-
-// function add() {
-// 	var one = numOne.value;
-// 	var two = numTwo.value;
-// 	console.log(one, two)
-// }
-
-</script>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </body>
+
 </html>

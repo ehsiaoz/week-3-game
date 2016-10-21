@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+<script type="text/javascript">
+	
+var a;
+var b;
+var c;
+var charGuess;
+
+var init = function() {
+	a = 6;
+	b = 7;
+	c = "hello";
+
+}
+
+
+
+
+document.onkeyup = function(event) {	
+		var typedChar;
+
+		if (typeof event !== 'undefined') {
+			typedChar = event.keyCode;
+		}
+		else if (event) {
+			typedChar = e.which;
+		}
+
+		//converts keycode into a letter
+		charGuess = String.fromCharCode(typedChar);
+
+		
+		checkGuess(charGuess);
+		console.log("This is charGuess inside function: " + charGuess);
+};
+
+var myWord = ["D", "G", "T"];
+
+function checkGuess(guess) {
+	for (var i = 0; i < myWord.length; i++) {
+		if(guess === myWord[0]) {
+			console.log("hello world");
+		}
+	};
+};
+
+console.log("This is checkGuess outside: "+ checkGuess(charGuess));
+
+
+// init();
+
+
+// console.log("this is the character pressed: " + charGuess);
+
+</script>
+
+</body>
+</html>

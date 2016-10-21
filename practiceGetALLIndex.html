@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+<script type="text/javascript">
+	
+
+var A = ["a", "b", "c", "d"];
+var B = ["a", "b", "_", "d"];
+
+
+function arraysEqual(arr1, arr2) {
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+
+    return true;
+}
+
+
+console.log(arraysEqual(A, B));
+
+// if (A === B) {
+// 	console.log("true");
+// }
+// 	console.log("false");
+
+
+
+// document.addEventListener("onkeypress", function() {
+// 	console.log("i was clicked");
+// })
+
+
+
+// document.onkeypress = function(event){
+
+//     var x = event.charCode || event.keyCode;  
+//     var charGuess = String.fromCharCode(x);  
+
+//     console.log(charGuess);
+//     return charGuess;
+
+// 	};
+// // 
+
+// var guessLetter = "a";
+
+// var heroLetters = ["b", "a", "t", "m", "a", "n"];
+
+
+// function blanksFromAnswer (heroLetters) {
+//     var result = "";
+
+//     for (var i = 0; i < heroLetters.length; i++) {
+//         result += "_ ";
+//     }
+
+//     return result;
+// }
+
+// console.log(blanksFromAnswer(heroLetters));
+
+
+// var blankLetters = heroLetters.map(function(x) {
+
+// 		if (x == guessLetter) {
+// 		return guessLetter;
+// 		}
+// 		else {
+// 			return "_";
+// 		}
+	
+// });
+
+
+// console.log(blankLetters)
+
+
+// console.log("this is beginning of blankLetter: " + blankLetters);
+
+
+// blankLetters.splice(1,1,guessLetter);
+// blankLetters.splice(4,1,guessLetter);
+
+
+// console.log("This is after splicing: " + blankLetters);
+
+// function getAllIndexes(arr, val) {
+//     var indexes = [], i = -1;
+//     while ((i = arr.indexOf(val, i+1)) != -1){
+//         indexes.push(i);
+//     }
+//     return indexes;
+// }
+
+// 1. change heroLetters to blankLetters
+// 2. compare guessLetter to heroLetters and grab the index# of the occurrrence of guessLetter and store in array
+// 3. 
+
+
+
+
+
+// newarray = getAllIndexes(heroLetters, guessLetter);
+
+// console.log(newarray);
+
+
+
+</script>
+
+</body>
+</html>
